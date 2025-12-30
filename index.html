@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Serena's Photobook</title>
+
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Allura&display=swap">
+
     <style>
         body {
             font-family: 'Allura', serif;
@@ -13,58 +15,116 @@
             margin: 30px;
             background-color: #ffeef4;
         }
+
         h1 {
             text-align: center;
-	    margin-bottom: 10px;
+            margin-bottom: 10px;
         }
+
         p {
-    	    text-align: center;
-  	    margin-top: 0; /* remove default top margin */
-	}
-	.gallery {
+            text-align: center;
+            margin-top: 0;
+        }
+
+        .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
             gap: 10px;
             margin-top: 30px;
         }
+
         .gallery img {
-            width: 100%; /* fit to screen */
+            width: 100%;
             object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.02);
+        }
+
+        /* Lightbox */
+        #lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        #lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 4px;
         }
     </style>
 </head>
+
 <body>
     <h1>&#9734 Serena's Photobook &#9734;</h1>
+
     <div class="gallery">
-		<img src="images/photo24.jpg" alt="Photo 24">
-		<img src="images/photo23.jpg" alt="Photo 23">
-		<img src="images/photo22.jpg" alt="Photo 22">
-		<img src="images/photo21.jpg" alt="Photo 21">
-		<img src="images/photo20.jpg" alt="Photo 20">
-		<img src="images/photo19.jpg" alt="Photo 19">
-    	<img src="images/photo18.jpg" alt="Photo 18">
-		<img src="images/photo17.jpg" alt="Photo 17">
-		<img src="images/photo16.jpg" alt="Photo 16">
-		<img src="images/photo15.jpg" alt="Photo 15">
-		<img src="images/photo14.jpg" alt="Photo 14">
-		<img src="images/photo13.jpg" alt="Photo 13">
-		<img src="images/photo12.jpg" alt="Photo 12">
-		<img src="images/photo11.jpg" alt="Photo 11">
-		<img src="images/photo10.jpg" alt="Photo 10">
-		<img src="images/photo9.jpg" alt="Photo 9">
-		<img src="images/photo8.jpg" alt="Photo 8">
-		<img src="images/photo7.jpg" alt="Photo 7">
-		<img src="images/photo6.jpg" alt="Photo 6">
-		<img src="images/photo5.jpg" alt="Photo 5">
-		<img src="images/photo4.jpg" alt="Photo 4">
-		<img src="images/photo3.jpg" alt="Photo 3">
-		<img src="images/photo2.jpg" alt="Photo 2">
-		<img src="images/photo1.jpg" alt="Photo 1">
+        <img src="images/photo24.jpg" alt="Photo 24">
+        <img src="images/photo23.jpg" alt="Photo 23">
+        <img src="images/photo22.jpg" alt="Photo 22">
+        <img src="images/photo21.jpg" alt="Photo 21">
+        <img src="images/photo20.jpg" alt="Photo 20">
+        <img src="images/photo19.jpg" alt="Photo 19">
+        <img src="images/photo18.jpg" alt="Photo 18">
+        <img src="images/photo17.jpg" alt="Photo 17">
+        <img src="images/photo16.jpg" alt="Photo 16">
+        <img src="images/photo15.jpg" alt="Photo 15">
+        <img src="images/photo14.jpg" alt="Photo 14">
+        <img src="images/photo13.jpg" alt="Photo 13">
+        <img src="images/photo12.jpg" alt="Photo 12">
+        <img src="images/photo11.jpg" alt="Photo 11">
+        <img src="images/photo10.jpg" alt="Photo 10">
+        <img src="images/photo9.jpg" alt="Photo 9">
+        <img src="images/photo8.jpg" alt="Photo 8">
+        <img src="images/photo7.jpg" alt="Photo 7">
+        <img src="images/photo6.jpg" alt="Photo 6">
+        <img src="images/photo5.jpg" alt="Photo 5">
+        <img src="images/photo4.jpg" alt="Photo 4">
+        <img src="images/photo3.jpg" alt="Photo 3">
+        <img src="images/photo2.jpg" alt="Photo 2">
+        <img src="images/photo1.jpg" alt="Photo 1">
     </div>
+
+    <!-- Lightbox element -->
+    <div id="lightbox">
+        <img id="lightbox-img" src="" alt="">
+    </div>
+
+    <script>
+        const images = document.querySelectorAll('.gallery img');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        images.forEach(img => {
+            img.addEventListener('click', () => {
+                lightbox.style.display = 'flex';
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+            });
+        });
+
+        lightbox.addEventListener('click', () => {
+            lightbox.style.display = 'none';
+            lightboxImg.src = '';
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                lightbox.style.display = 'none';
+                lightboxImg.src = '';
+            }
+        });
+    </script>
 </body>
 </html>
-
-
-
-
-
