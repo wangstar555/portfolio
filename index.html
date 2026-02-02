@@ -11,12 +11,13 @@
     <style>
         body {
             font-family: 'Allura', serif;
-            font-size: 30px;
+            font-size: 20px;
             margin: 30px;
             background-color: #ffeef4;
         }
 
         h1 {
+            font-size: 60px;
             text-align: center;
             margin-bottom: 10px;
         }
@@ -44,6 +45,118 @@
             transform: scale(1.02);
         }
 
+        /* Menu button: top-right corner of page (no header) */
+        .menu-wrap {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            z-index: 100;
+        }
+
+        .menu-button {
+            display: block;
+            width: 48px;
+            height: 48px;
+            padding: 0;
+            border: none;
+            background: transparent url('button.png') center/contain no-repeat;
+            cursor: pointer;
+        }
+        .menu-button:hover {
+            opacity: 0.9;
+        }
+
+        .menu-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 6px;
+            min-width: 160px;
+            background: rgba(255, 254, 254, 0.98);
+            border: 1px solid rgba(180, 120, 140, 0.3);
+            border-radius: 10px;
+            box-shadow: 0 8px 24px rgba(120, 80, 90, 0.2);
+            padding: 6px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+            transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+            z-index: 101;
+        }
+        .menu-dropdown.open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .menu-dropdown a {
+            display: block;
+            padding: 10px 16px;
+            color: #5c3d4a;
+            text-decoration: none;
+            font-size: 20px;
+            font-family: 'Times New Roman', Times, serif;
+            transition: background 0.15s;
+        }
+        .menu-dropdown a:hover {
+            background: rgba(255, 238, 244, 0.8);
+        }
+        .menu-dropdown a:first-child { border-radius: 8px 8px 0 0; }
+        .menu-dropdown a:last-child { border-radius: 0 0 8px 8px; }
+
+        .menu-backdrop {
+            position: fixed;
+            inset: 0;
+            z-index: 99;
+            display: none;
+        }
+        .menu-backdrop.visible { display: block; }
+
+        .page { display: none; }
+        .page.active { display: block; }
+
+        #page-about {
+            font-family: 'Times New Roman', Times, serif;
+        }
+        #page-about h1 {
+            font-family: 'Allura', serif;
+        }
+        #page-about .about-text {
+            text-align: left;
+            max-width: 730px;
+            margin: 0 auto;
+            margin-top: 2em;
+        }
+        #page-about .about-text p {
+            text-align: left;
+            margin-bottom: 1.2em;
+        }
+        #page-about .about-text p:last-child {
+            margin-bottom: 0;
+        }
+        #page-about .about-text a.email {
+            text-decoration: underline;
+            color: inherit;
+        }
+
+        /* Video grid: 3 videos per row */
+        .video-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .video-gallery video {
+            width: 100%;
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .video-gallery video:hover {
+            transform: scale(1.02);
+        }
+
         /* Lightbox */
         #lightbox {
             position: fixed;
@@ -58,18 +171,39 @@
             z-index: 1000;
         }
 
-        #lightbox img {
+        #lightbox img,
+        #lightbox video {
             max-width: 90%;
             max-height: 90%;
             border-radius: 4px;
+        }
+        #lightbox video {
+            display: none;
+        }
+        #lightbox.video-mode img {
+            display: none;
+        }
+        #lightbox.video-mode video {
+            display: block;
         }
     </style>
 </head>
 
 <body>
-    <h1>&#9734 Serena's Photobook &#9734;</h1>
+    <div class="menu-wrap">
+        <button type="button" class="menu-button" id="menuBtn" aria-haspopup="true" aria-expanded="false" title="Menu"></button>
+        <nav class="menu-dropdown" id="menuDropdown" role="menu">
+            <a href="#home" role="menuitem" data-page="home">Photobook</a>
+            <a href="#video" role="menuitem" data-page="video">Videobook</a>
+            <a href="#about" role="menuitem" data-page="about">About</a>
+        </nav>
+    </div>
+    <div class="menu-backdrop" id="menuBackdrop" aria-hidden="true"></div>
 
-    <div class="gallery">
+    <div id="page-home" class="page active">
+        <h1>&#9734 Serena's Photobook &#9734;</h1>
+
+        <div class="gallery">
         <img src="images/photo24.jpg" alt="Photo 24">
         <img src="images/photo23.jpg" alt="Photo 23">
         <img src="images/photo22.jpg" alt="Photo 22">
@@ -94,36 +228,145 @@
         <img src="images/photo3.jpg" alt="Photo 3">
         <img src="images/photo2.jpg" alt="Photo 2">
         <img src="images/photo1.jpg" alt="Photo 1">
+        </div>
     </div>
 
-    <!-- Lightbox element -->
+    <section id="page-video" class="page" aria-label="Videobook">
+        <h1>&#9734 Videobook &#9734;</h1>
+        <div class="video-gallery">
+            <video src="videos/nycsummer1.mp4" muted loop playsinline preload="metadata" data-src="videos/nycsummer1.mp4" data-start-time="20"></video>
+            <video src="videos/nycnight.mp4" muted loop playsinline preload="metadata" data-src="videos/nycnight.mp4"></video>
+            <video src="videos/nycsummer2.mp4" muted loop playsinline preload="metadata" data-src="videos/nycsummer2.mp4"></video>
+        </div>
+    </section>
+
+    <section id="page-about" class="page" aria-label="About">
+        <h1>&#9734 About &#9734;</h1>
+        <div class="about-text">
+            <p>Welcome to my media portfolio! A little bit about me: Originally from Toronto, Canada, and currently a student at NYU Stern studying Econometrics. I love reading, being outdoors, and everything analog (CDs, film photography, paper media).</p>
+            <p>I made this website to showcase some of my projects and to capture how I see the world. Taking photos and videos has always been a huge hobby of mine, and I'm excited to be exploring that more through different mediums (film, digital) and tools (GitHub, CapCut).</p>
+            <p>Feel free to reach out at <a href="mailto:serena.wang1906@gmail.com" class="email">serena.wang1906@gmail.com</a> :)</p>
+        </div>
+    </section>
+
+    <!-- Lightbox: images and videos -->
     <div id="lightbox">
         <img id="lightbox-img" src="" alt="">
+        <video id="lightbox-video" controls playsinline></video>
     </div>
 
     <script>
         const images = document.querySelectorAll('.gallery img');
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxVideo = document.getElementById('lightbox-video');
 
         images.forEach(img => {
             img.addEventListener('click', () => {
+                lightbox.classList.remove('video-mode');
+                lightboxImg.style.display = '';
+                if (lightboxVideo) {
+                    lightboxVideo.pause();
+                    lightboxVideo.src = '';
+                    lightboxVideo.style.display = 'none';
+                }
                 lightbox.style.display = 'flex';
                 lightboxImg.src = img.src;
                 lightboxImg.alt = img.alt;
             });
         });
 
-        lightbox.addEventListener('click', () => {
+        function openVideoLightbox(src) {
+            if (!lightboxVideo) return;
+            lightboxVideo.pause();
+            lightboxVideo.removeAttribute('src');
+            lightboxVideo.load();
+            lightbox.classList.add('video-mode');
+            lightboxImg.style.display = 'none';
+            lightboxImg.src = '';
+            lightboxVideo.controls = true;
+            lightboxVideo.muted = false;
+            lightboxVideo.style.display = 'block';
+            lightboxVideo.src = src;
+            lightboxVideo.load();
+            lightbox.style.display = 'flex';
+            function playWhenReady() {
+                lightboxVideo.removeEventListener('loadeddata', playWhenReady);
+                lightboxVideo.removeEventListener('canplay', playWhenReady);
+                lightboxVideo.play().catch(function () {});
+            }
+            lightboxVideo.addEventListener('loadeddata', playWhenReady, { once: true });
+            lightboxVideo.addEventListener('canplay', playWhenReady, { once: true });
+            lightboxVideo.play().catch(function () {});
+        }
+
+        document.querySelectorAll('.video-gallery video').forEach(vid => {
+            var startTime = vid.getAttribute('data-start-time');
+            if (startTime != null) {
+                vid.addEventListener('loadedmetadata', function setCover() {
+                    vid.currentTime = parseFloat(startTime);
+                }, { once: true });
+            }
+            vid.addEventListener('click', () => {
+                const src = vid.getAttribute('data-src') || vid.src;
+                openVideoLightbox(src);
+            });
+        });
+
+        function closeLightbox() {
             lightbox.style.display = 'none';
             lightboxImg.src = '';
+            if (lightboxVideo) {
+                lightboxVideo.pause();
+                lightboxVideo.removeAttribute('src');
+                lightboxVideo.load();
+                lightboxVideo.style.display = 'none';
+            }
+            lightbox.classList.remove('video-mode');
+            lightboxImg.style.display = '';
+        }
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
         });
 
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                lightbox.style.display = 'none';
-                lightboxImg.src = '';
-            }
+            if (e.key === 'Escape') closeLightbox();
+        });
+
+        // Menu: open/close and switch pages (Video, About)
+        const menuBtn = document.getElementById('menuBtn');
+        const menuDropdown = document.getElementById('menuDropdown');
+        const menuBackdrop = document.getElementById('menuBackdrop');
+
+        function openMenu() {
+            menuDropdown.classList.add('open');
+            menuBackdrop.classList.add('visible');
+            menuBtn.setAttribute('aria-expanded', 'true');
+        }
+        function closeMenu() {
+            menuDropdown.classList.remove('open');
+            menuBackdrop.classList.remove('visible');
+            menuBtn.setAttribute('aria-expanded', 'false');
+        }
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(el => el.classList.remove('active'));
+            const page = document.getElementById('page-' + pageId);
+            if (page) page.classList.add('active');
+        }
+
+        menuBtn.addEventListener('click', () => {
+            if (menuDropdown.classList.contains('open')) closeMenu();
+            else openMenu();
+        });
+        menuBackdrop.addEventListener('click', closeMenu);
+        menuDropdown.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const page = link.getAttribute('data-page');
+                if (page) showPage(page);
+                closeMenu();
+            });
         });
     </script>
 </body>
