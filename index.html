@@ -121,11 +121,25 @@
         #page-about h1 {
             font-family: 'Allura', serif;
         }
+        #page-about .about-content {
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            justify-content: center;
+            gap: 2em;
+            margin: 2em auto 0;
+            max-width: 900px;
+            flex-wrap: wrap;
+        }
         #page-about .about-text {
             text-align: left;
-            max-width: 730px;
-            margin: 0 auto;
-            margin-top: 2em;
+            flex: 0 1 auto;
+            min-width: 220px;
+            max-width: 320px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-self: stretch;
         }
         #page-about .about-text p {
             text-align: left;
@@ -137,6 +151,18 @@
         #page-about .about-text a.email {
             text-decoration: underline;
             color: inherit;
+        }
+        #page-about .about-photo {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #page-about .about-photo img {
+            max-height: 420px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
         }
 
         /* Video grid: 3 videos per row */
@@ -237,16 +263,21 @@
             <video src="videos/nycsummer1.mp4" muted loop playsinline preload="metadata" data-src="videos/nycsummer1.mp4" data-start-time="20"></video>
             <video src="videos/nycnight.mp4" muted loop playsinline preload="metadata" data-src="videos/nycnight.mp4"></video>
             <video src="videos/nycsummer2.mp4" muted loop playsinline preload="metadata" data-src="videos/nycsummer2.mp4"></video>
-            <video src="videos/seaglasscarousel.mp4" muted loop playsinline preload="metadata" data-src="videos/seaglasscarousel.mp4" data-start-time="42"></video>
+            <video src="videos/seaglasscarousel.mp4" muted loop playsinline preload="metadata" data-src="videos/seaglasscarousel.mp4"></video>
         </div>
     </section>
 
     <section id="page-about" class="page" aria-label="About">
         <h1>&#9734 About &#9734;</h1>
-        <div class="about-text">
-            <p>Welcome to my media portfolio! A little bit about me: Originally from Toronto, Canada, and currently a student at NYU Stern studying Econometrics. I love reading, being outdoors, and everything analog (CDs, film photography, paper media).</p>
-            <p>I made this website to showcase some of my projects and to capture how I see the world. Taking photos and videos has always been a huge hobby of mine, and I'm excited to be exploring that more through different mediums (film, digital) and tools (GitHub, CapCut).</p>
-            <p>Feel free to reach out at <a href="mailto:serena.wang1906@gmail.com" class="email">serena.wang1906@gmail.com</a> :)</p>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Welcome to my media portfolio! A little bit about me: Originally from Toronto, Canada, and currently a student at NYU Stern studying Econometrics. I love reading, being outdoors, and anything analog (CDs, film photography, paper media).</p>
+                <p>I made this website to showcase some of my projects and to capture how I see the world. Taking photos and videos has always been a huge hobby of mine, and I'm excited to be exploring that more through different mediums (film, digital) and tools (GitHub, CapCut).</p>
+                <p>Feel free to reach out at <a href="mailto:serena.wang1906@gmail.com" class="email">serena.wang1906@gmail.com</a> :)</p>
+            </div>
+            <div class="about-photo">
+                <img src="selfie.jpg" alt="Photo of Serena">
+            </div>
         </div>
     </section>
 
@@ -372,5 +403,3 @@
     </script>
 </body>
 </html>
-
-
