@@ -175,9 +175,11 @@
 
         .video-gallery video {
             width: 100%;
+            aspect-ratio: 16 / 9;
             object-fit: cover;
             cursor: pointer;
             transition: transform 0.2s;
+            background: #000;
         }
         .video-gallery video:hover {
             transform: scale(1.02);
@@ -260,10 +262,10 @@
     <section id="page-video" class="page" aria-label="Videobook">
         <h1>&#9734 Videobook &#9734;</h1>
         <div class="video-gallery">
-            <video src="videos/nycsummer1.mp4" muted loop playsinline preload="metadata" data-src="videos/nycsummer1.mp4" data-start-time="20"></video>
-            <video src="videos/nycnight.mp4" muted loop playsinline preload="metadata" data-src="videos/nycnight.mp4"></video>
-            <video src="videos/nycsummer2.mp4" muted loop playsinline preload="metadata" data-src="videos/nycsummer2.mp4"></video>
-            <video src="videos/seaglasscarousel.mp4" muted loop playsinline preload="metadata" data-src="videos/seaglasscarousel.mp4" data-start-time="42"></video>
+            <video src="videos/nycsummer1.mp4" muted loop playsinline preload="none" poster="posters/nycsummer1.png" data-src="videos/nycsummer1.mp4" data-start-time="20"></video>
+            <video src="videos/nycnight.mp4" muted loop playsinline preload="none" poster="posters/nycnight.png" data-src="videos/nycnight.mp4"></video>
+            <video src="videos/nycsummer2.mp4" muted loop playsinline preload="none" poster="posters/nycsummer2.png" data-src="videos/nycsummer2.mp4"></video>
+            <video src="videos/seaglasscarousel.mp4" muted loop playsinline preload="none" poster="posters/seaglasscarousel.png" data-src="videos/seaglasscarousel.mp4"></video>
         </div>
     </section>
 
@@ -403,4 +405,3 @@
     </script>
 </body>
 </html>
-
