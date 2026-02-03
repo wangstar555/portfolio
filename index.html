@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- Already good for mobile scaling -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Serena's Photobook</title>
 
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Allura&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Allura&display=swap">
 
     <style>
         body {
@@ -214,6 +214,79 @@
         #lightbox.video-mode video {
             display: block;
         }
+
+        /* =========================
+           MOBILE / RESPONSIVE RULES
+           ========================= */
+
+        /* Phones: tighten spacing, stack layouts, force 1-up grids */
+        @media (max-width: 600px) {
+            body {
+                margin: 14px;
+                font-size: 18px;
+            }
+
+            h1 {
+                font-size: 38px;
+                line-height: 1.1;
+            }
+
+            /* Menu: closer to edges + solid tap target */
+            .menu-wrap {
+                top: 14px;
+                right: 14px;
+            }
+            .menu-button {
+                width: 44px;
+                height: 44px;
+            }
+            .menu-dropdown a {
+                font-size: 18px;
+                padding: 12px 14px;
+            }
+
+            /* Photos: 1 per row */
+            .gallery {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            /* Videos: 1 per row */
+            .video-gallery {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            /* About: stack text over photo; image becomes responsive */
+            #page-about .about-content {
+                flex-direction: column;
+                gap: 1.2em;
+                margin-top: 1.2em;
+            }
+            #page-about .about-text {
+                max-width: none;
+            }
+            #page-about .about-photo img {
+                max-height: none;
+                width: 100%;
+                height: auto;
+                object-fit: contain;
+            }
+
+            /* Lightbox: use more screen on phones */
+            #lightbox img,
+            #lightbox video {
+                max-width: 95%;
+                max-height: 85%;
+            }
+        }
+
+        /* Tablets / small screens: make videobook 2-up */
+        @media (min-width: 601px) and (max-width: 900px) {
+            .video-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
     </style>
 </head>
 
@@ -232,30 +305,30 @@
         <h1>&#9734 Serena's Photobook &#9734;</h1>
 
         <div class="gallery">
-        <img src="images/photo24.jpg" alt="Photo 24">
-        <img src="images/photo23.jpg" alt="Photo 23">
-        <img src="images/photo22.jpg" alt="Photo 22">
-        <img src="images/photo21.jpg" alt="Photo 21">
-        <img src="images/photo20.jpg" alt="Photo 20">
-        <img src="images/photo19.jpg" alt="Photo 19">
-        <img src="images/photo18.jpg" alt="Photo 18">
-        <img src="images/photo17.jpg" alt="Photo 17">
-        <img src="images/photo16.jpg" alt="Photo 16">
-        <img src="images/photo15.jpg" alt="Photo 15">
-        <img src="images/photo14.jpg" alt="Photo 14">
-        <img src="images/photo13.jpg" alt="Photo 13">
-        <img src="images/photo12.jpg" alt="Photo 12">
-        <img src="images/photo11.jpg" alt="Photo 11">
-        <img src="images/photo10.jpg" alt="Photo 10">
-        <img src="images/photo9.jpg" alt="Photo 9">
-        <img src="images/photo8.jpg" alt="Photo 8">
-        <img src="images/photo7.jpg" alt="Photo 7">
-        <img src="images/photo6.jpg" alt="Photo 6">
-        <img src="images/photo5.jpg" alt="Photo 5">
-        <img src="images/photo4.jpg" alt="Photo 4">
-        <img src="images/photo3.jpg" alt="Photo 3">
-        <img src="images/photo2.jpg" alt="Photo 2">
-        <img src="images/photo1.jpg" alt="Photo 1">
+            <img src="images/photo24.jpg" alt="Photo 24">
+            <img src="images/photo23.jpg" alt="Photo 23">
+            <img src="images/photo22.jpg" alt="Photo 22">
+            <img src="images/photo21.jpg" alt="Photo 21">
+            <img src="images/photo20.jpg" alt="Photo 20">
+            <img src="images/photo19.jpg" alt="Photo 19">
+            <img src="images/photo18.jpg" alt="Photo 18">
+            <img src="images/photo17.jpg" alt="Photo 17">
+            <img src="images/photo16.jpg" alt="Photo 16">
+            <img src="images/photo15.jpg" alt="Photo 15">
+            <img src="images/photo14.jpg" alt="Photo 14">
+            <img src="images/photo13.jpg" alt="Photo 13">
+            <img src="images/photo12.jpg" alt="Photo 12">
+            <img src="images/photo11.jpg" alt="Photo 11">
+            <img src="images/photo10.jpg" alt="Photo 10">
+            <img src="images/photo9.jpg" alt="Photo 9">
+            <img src="images/photo8.jpg" alt="Photo 8">
+            <img src="images/photo7.jpg" alt="Photo 7">
+            <img src="images/photo6.jpg" alt="Photo 6">
+            <img src="images/photo5.jpg" alt="Photo 5">
+            <img src="images/photo4.jpg" alt="Photo 4">
+            <img src="images/photo3.jpg" alt="Photo 3">
+            <img src="images/photo2.jpg" alt="Photo 2">
+            <img src="images/photo1.jpg" alt="Photo 1">
         </div>
     </div>
 
