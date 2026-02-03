@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- Already good for mobile scaling -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Serena's Photobook</title>
 
@@ -45,7 +44,6 @@
             transform: scale(1.02);
         }
 
-        /* Menu button: top-right corner of page (no header) */
         .menu-wrap {
             position: fixed;
             top: 30px;
@@ -185,7 +183,6 @@
             transform: scale(1.02);
         }
 
-        /* Lightbox */
         #lightbox {
             position: fixed;
             top: 0;
@@ -215,11 +212,6 @@
             display: block;
         }
 
-        /* =========================
-           MOBILE / RESPONSIVE RULES
-           ========================= */
-
-        /* Phones: tighten spacing, stack layouts, force 1-up grids */
         @media (max-width: 600px) {
             body {
                 margin: 14px;
@@ -231,7 +223,6 @@
                 line-height: 1.1;
             }
 
-            /* Menu: closer to edges + solid tap target */
             .menu-wrap {
                 top: 14px;
                 right: 14px;
@@ -245,19 +236,16 @@
                 padding: 12px 14px;
             }
 
-            /* Photos: 1 per row */
             .gallery {
                 grid-template-columns: 1fr;
                 gap: 8px;
             }
 
-            /* Videos: 1 per row */
             .video-gallery {
                 grid-template-columns: 1fr;
                 gap: 8px;
             }
 
-            /* About: stack text over photo; image becomes responsive */
             #page-about .about-content {
                 flex-direction: column;
                 gap: 1.2em;
@@ -273,7 +261,6 @@
                 object-fit: contain;
             }
 
-            /* Lightbox: use more screen on phones */
             #lightbox img,
             #lightbox video {
                 max-width: 95%;
@@ -281,7 +268,6 @@
             }
         }
 
-        /* Tablets / small screens: make videobook 2-up */
         @media (min-width: 601px) and (max-width: 900px) {
             .video-gallery {
                 grid-template-columns: repeat(2, 1fr);
@@ -478,3 +464,4 @@
     </script>
 </body>
 </html>
+
