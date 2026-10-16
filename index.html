@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Serena's Photobook</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Times+New+Roman&family=Lora&display=swap">
     <style>
         body {
             font-family: 'Great Vibes', serif;
@@ -118,6 +119,11 @@
         #page-about {
             font-family: 'Great Vibes', serif;
             color: #ffffff;
+        }
+
+        #page-about .about-text p {
+            font-family: 'Times New Roman', serif;
+            font-size: 20px;
         }
 
         #page-about .about-content {
@@ -283,14 +289,14 @@
     <div class="menu-wrap">
         <button type="button" class="menu-button" id="menuBtn" aria-haspopup="true" aria-expanded="false" title="Menu"></button>
         <nav class="menu-dropdown" id="menuDropdown" role="menu">
-            <a href="#home" role="menuitem" data-page="home">Photobook</a>
             <a href="#video" role="menuitem" data-page="video">Videobook</a>
+            <a href="#home" role="menuitem" data-page="home">Photobook</a>
             <a href="#about" role="menuitem" data-page="about">About</a>
         </nav>
     </div>
     <div class="menu-backdrop" id="menuBackdrop" aria-hidden="true"></div>
 
-    <div id="page-home" class="page active">
+    <div id="page-home" class="page">
         <h1>&#9734 Serena's Photobook &#9734;</h1>
 
         <div class="gallery">
@@ -324,7 +330,7 @@
         </div>
     </div>
 
-    <section id="page-video" class="page" aria-label="Videobook">
+    <section id="page-video" class="page active" aria-label="Videobook">
         <h1>&#9734; Videobook &#9734;</h1>
 
         <div class="video-gallery">
@@ -428,8 +434,8 @@
         <div class="about-content">
             <div class="about-text">
                 <p> </p>
-                <p>Welcome to my media portfolio! A little background: I'm originally from Toronto, Canada, and am currently a student at NYU Stern studying Econometrics. I love reading, being in nature, and all kinds of brain games (crosswords, Zetamac, NYT spelling bee, etc).</p>
-                <p>I made this website as a personal keepsake for some of my media projects. Taking photos and videos has always been a huge hobby, and I'm excited to be exploring that more through different mediums (film, digital - hopefully more raw files in the future!) and tools (CapCut, computer & programming languages).</p> 
+                <p>Welcome to my media portfolio! I'm originally from Toronto, Canada, and am currently a student at NYU Stern studying Econometrics. I love reading, being in nature, and all kinds of brain games (crosswords, Zetamac, NYT spelling bee, etc).</p>
+                <p>I made this website as a personal keepsake for some of my creative projects. Taking photos and videos has always been a huge hobby of mine, and I'm excited to be exploring that more through different mediums (film, digital) and tools (CapCut, computer & programming languages).</p> 
                 <p>Feel free to reach out <a href="mailto:sw6544@stern.nyu.edu" class="email">sw6544@stern.nyu.edu</a></p>
             </div>
             <div class="about-photo">
