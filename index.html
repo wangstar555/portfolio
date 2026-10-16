@@ -11,7 +11,7 @@
             font-family: 'Great Vibes', serif;
             font-size: 20px;
             color: #ffffff;
-            margin: 30px;
+            margin: 16px;
             background-color: #19031e;
         }
 
@@ -48,8 +48,8 @@
 
         .menu-wrap {
             position: fixed;
-            top: 30px;
-            right: 30px;
+            top: 16px;
+            right: 16px;
             z-index: 100;
         }
 
@@ -129,23 +129,36 @@
         #page-about .about-content {
             display: flex;
             flex-direction: row;
-            align-items: stretch;
+            align-items: center;
             justify-content: center;
             gap: 2em;
-            margin: 2em auto 0;
-            max-width: 1200px;
-            flex-wrap: wrap;
-        }
+            margin: 2em 0 0;
+            max-width: none;
+            flex-wrap: nowrap;
+    }
+
         #page-about .about-text {
             text-align: left;
-            flex: 0 1 auto;
-            min-width: 300px;
-            max-width: 400px;
+            flex: 1 1 50%;
+            min-width: 0;
+            max-width: none;
+    }
+
+        #page-about .about-photo {
+            flex: 1 1 50%;
+            min-width: 0;
             display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-self: stretch;
-        }
+            align-items: center;
+            justify-content: center;
+    }
+    
+        #page-about .about-photo img {
+            max-width: 100%;
+            max-height: 80vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+    }
         #page-about .about-text p {
             font-size: 28px;
             color: #ffffff;
@@ -158,18 +171,6 @@
         #page-about .about-text a.email {
             text-decoration: underline;
             color: inherit;
-        }
-        #page-about .about-photo {
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        #page-about .about-photo img {
-            max-height: 600px;
-            width: auto;
-            height: auto;
-            object-fit: contain;
         }
 
         .video-gallery {
@@ -268,6 +269,10 @@
                 width: 100%;
                 height: auto;
                 object-fit: contain;
+            }
+            #page-about .about-text,
+            #page-about .about-photo {
+                flex: none;
             }
 
             #lightbox img,
